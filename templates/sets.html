@@ -1,0 +1,45 @@
+<style>
+    .grid-container-sets {
+        grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+        background-color: transparent;
+    }
+    
+    .card-sets {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-auto-rows: min-content;
+        gap: var(--half-rem);
+        padding: calc(var(--full-rem) * .75);
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .v-card-sets-img {
+        grid-column: 1/3;
+        grid-row: 1/4;
+        max-width: 200px;
+    }
+    .v-card-sets-img ~ p {
+        grid-column: 3/4;
+        text-align: right;
+        line-height: var(--full-rem);
+    }
+
+    .h-card-sets-img {
+        grid-column: 1/4;
+        grid-row: 1;
+        justify-self: center;
+        max-width: 200px;
+    }
+    .h-card-sets-img ~ p {
+        text-align: center;
+        line-height: var(--full-rem);
+    }
+
+.non-retired-sets {
+    display: inline-block;
+}
+</style>
+
+<div class="shell"></div>

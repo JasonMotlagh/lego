@@ -1,0 +1,207 @@
+<style>
+    input, select, textarea {
+        padding: 0 var(--quarter-rem);
+        color: #000000;
+        font-size: calc(var(--full-rem) * .8);
+        width: 100%;
+    }
+    input, select {
+        height: var(--full-half-rem);
+    }
+    input, textarea {
+        border: 1px solid var(--color-lego-yellow-secondary);
+    }
+    input:disabled, textarea:disabled {
+        border: 1px solid var(--color-page-background);
+        background-color: #ffffff;
+    }
+
+    .add-errors {
+        display: none;
+        grid-column: 1/4;
+    }
+    .error-grid p {
+        margin: 0;
+        padding: calc(var(--quarter-rem) / 2);
+        text-align: left;
+        font-weight: 300;
+        font-size: calc(var(--full-rem) * .8);
+        color: var(--color-lego-red);
+    }.error-grid p:before {
+        content: "*";
+    }
+    
+    .modal-content {
+        width: 90vw;
+    }
+    .card-piece-modal {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(12, auto);
+        column-gap: var(--half-rem);
+        row-gap: var(--half-rem);
+    }
+    .card-piece-modal img {
+        grid-column: 1/3;
+        grid-row: 1/2;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .piece-name-title {
+        font-weight: 700;
+        font-size: var(--full-quarter-rem);
+        text-align: center;
+        grid-column: 1/3;
+        grid-row: 2/3;
+    }
+    .model-move-drawer label {
+        margin: 0;
+        padding: calc(var(--quarter-rem) / 2);
+        text-align: right;
+        font-weight: 700;
+    }
+
+    .modal-footer {
+        display: none;
+        justify-content: space-between;
+    }
+    .move-drawer {
+        display: block;
+    }
+    .modal-delete {
+        display: none;
+    }
+
+    @media all and (min-width: 630px) {
+        .card-piece-modal {
+            grid-template-columns: repeat(3, auto);
+            grid-template-rows: repeat(11, auto);
+        }
+        .card-piece-modal img {
+            grid-column: 1/2;
+            grid-row: 1/12;
+        }
+
+        .piece-name-title {
+            text-align: left;
+            grid-column: 2/4;
+            grid-row: 1/2;
+        }
+        .piece-description {
+            grid-column: 3/4;
+            grid-row: 11/12;
+        }
+    }
+    @media all and (min-width: 992px) {
+        .card-piece-modal {
+            grid-template-columns: repeat(5, auto);
+            grid-template-rows: repeat(6, auto);
+        }
+        .card-piece-modal img {
+            grid-column: 1/2;
+            grid-row: 1/7;
+        }
+
+        .piece-name-title {
+            text-align: left;
+            grid-column: 2/6;
+            grid-row: 1/2;
+        }
+        .piece-description {
+            grid-column: 5/6;
+            grid-row: 6/7;
+        }
+    }
+    @media all and (min-width: 1260px) {
+        .card-piece-modal {
+            grid-template-columns: repeat(7, auto);
+            grid-template-rows: repeat(5, auto);
+        }
+        .card-piece-modal img {
+            grid-column: 1/2;
+            grid-row: 1/6;
+        }
+
+        .piece-name-title {
+            text-align: left;
+            grid-column: 2/8;
+            grid-row: 1/2;
+        }
+        .piece-description {
+            grid-column: 3/8;
+            grid-row: 5/6;
+        }
+    }
+</style>
+
+<!-- Modal Content-->
+<div class="card modal-content">
+
+<!-- Modal Header -->
+    <div class="modal-header">
+        <div class="modal-edit">
+            <i class="fas fa-edit"></i>
+        </div>
+        <div class="modal-save">
+            <i class="far fa-save"></i>
+        </div>
+        <div class="modal-close">
+            <i class="far fa-window-close"></i>
+        </div>
+
+        <div class="add-errors">
+            <h3>Please fix the following errors:</h3>
+            <div class="error-grid"></div>
+        </div>
+    </div>
+<!-- Modal Body -->
+    <div class="modal-body card-piece-modal">
+
+        <input type="hidden" id="piece-pk-id" name="piece-pk-id" value="" disabled>
+        <img id="piece-img" src="/images/spacer.png" onerror="imgErr(this, 'piece')">
+
+        <p class="piece-name-title">&nbsp;</p>
+
+        <label class="piece-design-title" for="piece-design">Design ID:</label>
+        <select class="piece-design" id="piece-design" name="piece-design"></select>
+
+        <label class="piece-element-title" for="piece-element">Element ID:</label>
+        <input class="piece-element" type="number" id="piece-element" name="piece-element" value="">
+
+        <label class="piece-color-title" for="piece-color">Color:</label>
+        <select class="piece-color" id="piece-color" name="piece-color"></select>
+
+        <label class="piece-quantity-title" for="piece-quantity">Quantity:</label>
+        <input class="piece-quantity" type="number" id="piece-quantity" name="piece-quantity" value="" min="1">
+
+        <label class="piece-case-title" for="piece"case">Case:</label>
+        <select class="piece-case" id="piece-case" name="piece-case"></select>
+
+        <label class="piece-col-title" for="piece-col">Column:</label>
+        <input class="piece-col" type="number" id="piece-col" name="piece-col" value="" min="1" max="1">
+
+        <label class="piece-row-title" for="piece-row">Row:</label>
+        <input class="piece-row" type="number" id="piece-row" name="piece-row" value="" min="1" max="1">
+
+        <label class="piece-slot-title" for="piece-slot">Slot:</label>
+        <input class="piece-slot" type="number" id="piece-slot" name="piece-slot" value="" min="0" max="1">
+
+        <label class="piece-sub-slot-title" for="piece-sub-slot">Sub-Slot:</label>
+        <input class="piece-sub-slot" type="number" id="piece-sub-slot" name="piece-sub-slot" value="" min="0" max="1">
+
+        <label class="piece-description-title" for="piece-description">Description:</label>
+        <textarea class="piece-description" id="piece-description" name="piece-description" rows="3"></textarea>
+
+    </div>
+<!-- Modal Footer -->
+    <div class="modal-footer">
+        <div class="model-move-drawer">
+            <input type="checkbox" id="move-drawer" class="move-drawer" name="move-drawer">
+            <label for="move-drawer" class="move-drawer-label" id="move-drawer-label">Move Drawer</label>
+        </div>
+        <div class="modal-delete">
+            <i class="fas fa-trash-alt"></i>
+        </div>
+    </div>
+</div>

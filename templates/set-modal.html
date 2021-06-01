@@ -1,0 +1,171 @@
+<style>
+    input, select, textarea {
+        padding: 0 var(--quarter-rem);
+        color: #000000;
+        font-size: calc(var(--full-rem) * .8);
+        width: 100%;
+    }
+    input, select {
+        height: var(--full-half-rem);
+    }
+    input, textarea {
+        border: 1px solid var(--color-lego-yellow-secondary);
+    }
+    input:disabled, textarea:disabled {
+        border: 1px solid var(--color-page-background);
+        background-color: #ffffff;
+    }
+    
+    .modal-content {
+        width: 90vw;
+    }
+    .card-set-modal {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(18, auto);
+        column-gap: var(--half-rem);
+        row-gap: var(--half-rem);
+    }
+    .card-set-modal img {
+        grid-column: 1/3;
+        grid-row: 1/2;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .modal-footer {
+        justify-content: end;
+    }
+
+    @media all and (min-width: 630px) {
+        .card-set-modal {
+            grid-template-columns: repeat(3, auto);
+            grid-template-rows: repeat(17, auto);
+        }
+        .card-set-modal img {
+            grid-column: 1/2;
+            grid-row: 1/18;
+        }
+        
+        .set-description {
+            grid-column: 3/4;
+            grid-row: 17/18;
+        }
+    }
+    @media all and (min-width: 992px) {
+        .card-set-modal {
+            grid-template-columns: repeat(5, auto);
+            grid-template-rows: repeat(9, auto);
+        }
+        .card-set-modal img {
+            grid-row: 1/11;
+        }
+        
+        .set-description {
+            grid-column: 3/6;
+            grid-row: 9/10;
+        }
+    }
+    
+    @media all and (min-width: 1260px) {
+        .card-set-modal {
+            grid-template-columns: repeat(9, auto);
+            grid-template-rows: repeat(5, auto);
+        }
+        .card-set-modal img {
+            grid-column: 1/2;
+            grid-row: 1/7;
+        }
+        
+        .set-description {
+            grid-column: 3/10;
+            grid-row: 5/6;
+        }
+    }
+</style>
+
+<!-- Modal Content-->
+<div class="card modal-content">
+
+<!-- Modal Header -->
+    <div class="modal-header">
+        <div class="modal-edit">
+            <i class="fas fa-edit"></i>
+        </div>
+        <div class="modal-save">
+            <i class="far fa-save"></i>
+        </div>
+        <div class="modal-close">
+            <i class="far fa-window-close"></i>
+        </div>
+
+        <div class="add-errors">
+            <h3>Please fix the following errors:</h3>
+            <div class="error-grid"></div>
+        </div>
+    </div>
+<!-- Modal Body -->
+    <div class="modal-body card-set-modal">
+
+        <input type="hidden" id="set-pk-id" name="set-pk-id" value="0" disabled>
+        <img id="set-img" src="/images/spacer.png" onerror="imgErr(this)">
+
+        <label class="set-name-title" for="set-name">Set Name:</label>
+        <input class="set-name" type="text" id="set-name" name="set-name" value="">
+
+        <label class="set-number-title" for="set-number">Set #:</label>
+        <input class="set-number" type="text" id="set-number" name="set-number" value="">
+
+        <label class="set-pieces-title" for="set-pieces">Pieces:</label>
+        <input class="set-pieces" type="text" id="set-pieces" name="set-pieces" value="">
+
+        <label class="set-price-title" for="set-price">Price:&nbsp;$</label>
+        <input class="set-price" type="text" id="set-price" name="set-price" value="">
+
+        <label class="set-year-title" for="set-year">Year:</label>
+        <input class="set-year" type="number" id="set-year" name="set-year" value="">
+
+        <label class="set-minifigures-title" for="set-minifigures">Minifigures:</label>
+        <input class="set-minifigures" type="number" id="set-minifigures" name="set-minifigures" value="0">
+
+        <label class="set-theme-title" for="set-theme">Theme:</label>
+        <select class="set-theme" id="set-theme" name="set-theme"></select>
+
+        <label class="set-sub-theme-title">Sub-Theme:</label>
+        <select class="set-sub-theme" id="set-sub-theme" name="set-sub-theme"></select>
+
+        <label class="set-quantity-title" for="set-quantity">Quantity:</label>
+        <input class="set-quantity" type="number" id="set-quantity" name="set-quantity" value="0">
+
+        <label class="set-built-title" for="set-built">Built:</label>
+        <input class="set-built" type="number" id="set-built" name="set-built" value="0">
+
+        <label class="set-sort-title" for="set-sort">Sorted:</label>
+        <input class="set-sort" type="number" id="set-sort" name="set-sort" value="0">
+
+        <label class="set-build-time-title" for="set-build-time">Build Time:</label>
+        <input class="set-build-time" type="number" id="set-build-time" name="set-build-time" value="0">
+
+        <label class="set-weight-lbs-title" for="set-weight-lbs">Weight lbs:</label>
+        <input class="set-weight-lbs" type="text" id="set-weight-lbs" name="set-weight-lbs" value="0">
+
+        <label class="set-weight-g-title" for="set-weight-g">Weight g:</label>
+        <input class="set-weight-g" type="text" id="set-weight-g" name="set-weight-g" value="0">
+
+        <label class="set-retired-title" for="set-retired">Retired:</label>
+        <select class="set-retired" id="set-retired" name="set-retired"></select>
+
+        <label class="set-retired-year-title" for="set-retired-year">Retired Year:</label>
+        <input class="set-retired-year" type="number" id="set-retired-year" name="set-retired-year" value="">
+
+        <label class="set-description-title" for="set-description">Description:</label>
+        <textarea class="set-description" id="set-description" name="set-description" rows="3"></textarea>
+
+    </div>
+<!-- Modal Footer -->
+    <div class="modal-footer">
+        <div class="modal-delete">
+            <i class="fas fa-trash-alt"></i>
+        </div>
+    </div>
+</div>

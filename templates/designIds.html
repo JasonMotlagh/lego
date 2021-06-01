@@ -1,0 +1,29 @@
+<style>
+    .grid-container-designid-search {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, auto));
+        gap: var(--half-rem);
+        padding: var(--quarter-rem);
+        border-radius: calc(var( --navbar-corner-radius) / 4);
+        background-color: transparent;
+    }
+    .card-designid-search-results {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(5, auto);
+        gap: var(--half-rem);
+        padding: calc(var(--full-rem) * .75);
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .card-designid-search-results p:nth-child(odd) {
+        margin: 0;
+        padding: calc(var(--quarter-rem) / 2);
+        text-align: right;
+        font-weight: 700;
+    }
+</style>
+<div class="shell"></div>

@@ -1,0 +1,229 @@
+nav {
+  /* display: none;   */
+  visibility: hidden;
+  background-color: var(--color-lego-yellow);
+  padding: var(--half-rem) var(--full-rem);
+  border-radius: var( --navbar-corner-radius);
+  border: var(--color-lego-yellow-secondary) 1px solid;
+  margin-bottom: var(--half-rem);
+
+  /* Makes the narbar 'sticky' when it's top value is 0 */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.menu > [type="checkbox"] {
+  /*
+    [attribute^=value]
+    This will target every element who's <attribute> starts with the <value>
+    In this use case we are targeting any element who's 'id' starts with 'drop'.
+
+    div[attribute^=value]
+    This will target every <div>element who's <attribute> starts with the <value>
+  */
+  display: none;
+}
+
+.logo {
+  margin: 0;
+  padding: 0;
+  top: calc(var(--quarter-rem) / 2);
+  position: relative;
+}
+
+.nav-logo, .nav-icon-spacer-container {
+  margin: 0;
+}
+.nav-logo {
+  height: var(--navbar-height);
+  cursor: pointer;
+}
+#icon-choices {
+  height: calc(var(--navbar-height) * .75);
+  width: calc(var(--navbar-height) * .75) !important;
+
+  cursor: pointer;
+  align-items: center;
+  color: var(--color-icon);
+  visibility: hidden;
+}
+#icon-choices:hover {
+  color: var(--color-lego-yellow-secondary);
+}
+.choices:checked ~ .options-container {
+  left: -25px;
+}
+.options-container {
+  background-color: var(--color-lego-yellow);
+  padding: var(--half-rem) var(--full-rem);
+  border-top-right-radius: var( --navbar-corner-radius);
+  border-bottom-right-radius: var( --navbar-corner-radius);
+  border: var(--color-lego-yellow-secondary) 1px solid;
+  top: 0px;
+  width: 50vw;
+  max-width: 300px;
+  position: absolute;
+  left: -320px;
+  filter: drop-shadow(.125rem .1875rem .125rem rgba(87, 87, 87, .75));
+  transition: left var(--transition-speed) ease-out;
+  /* margin-top: calc(var(--full-rem) * -1.5); */
+
+  /* Commenting this out since indexing is handled on the nav itself */
+  /* z-index: 10; */
+}
+.options {
+    text-align: right;
+}
+.options li {
+  padding: var(--quarter-rem) 0;
+}
+.options li a {
+    margin: 0;
+    padding: var(--quarter-rem);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+.options li a:hover{
+    color: var(--color-lego-yellow-secondary);
+}
+.options h4 {
+  color: var(--color-lego-red);
+}
+.options h4:nth-of-type(2) {
+  padding-top: var(--half-rem);
+  border-top: var(--color-lego-yellow-secondary) 1px solid;
+}
+
+.li-1 {
+  margin: 0;
+  padding: var(--full-rem) var(--half-rem);
+}
+.li-1 a, .li-2 a {
+  display: block;
+  font-weight: 700;
+  cursor: pointer;
+}
+.li-1 a:hover{
+  color: var(--color-lego-yellow-secondary);
+}
+
+/****************
+Mobile Menu
+****************/
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle {
+  order: 1;
+}
+.menu-items {
+  order: 3;
+  width: 100%;
+  display: none;
+}
+.li-1 {
+  width: 100%;
+  text-align: center;
+  /* display: none; */
+}
+
+.search-instructions, .search-error {
+  margin: 0;
+  padding: 0 0 0 var(--half-rem);
+  font-size: calc(var(--full-rem) * .75);
+  font-weight: 400;
+  text-align: end;
+}
+.search-instructions {
+  font-weight: 400;
+}
+.search-error{
+  display: none;
+  color: var(--color-lego-red);
+  font-weight: 700;
+}
+
+#bars-menu {
+  cursor: pointer;
+}
+#bars-menu:hover>.bars, #bars-menu:hover>.bars::before, #bars-menu:hover>.bars::after {
+  background: var(--color-lego-yellow-secondary);
+}
+.bars {
+  position: relative;
+  top: calc(-1 * var(--quarter-rem));
+}
+.bars, .bars::before, .bars::after {
+  background: var(--color-icon);
+  display: inline-block;
+  border-radius: calc(var(--navbar-corner-radius) / 5);
+  height: var(--quarter-rem);
+  width: var(--full-half-rem);
+}
+.bars::before, .bars::after {
+  position: absolute;
+  content: "";
+}
+.bars::before {
+  top: var(--half-rem);
+}
+.bars::after {
+  top: calc(-1 * var(--half-rem));
+}
+
+.drop-menu:checked ~ .menu-items {
+  display: block;
+}
+
+
+/****************
+  Tablet/Desktop Menu
+****************/
+@media all and (min-width: 540px) {
+  .menu {
+    justify-content: center;
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+  .nav-icon-spacer-container {
+    margin-right: var(--full-rem);
+    display: none;
+  }
+  .nav-logo {
+    margin: 0;
+    flex: 1;
+    order: 0;
+  }
+
+  .menu-items {
+    display: block;
+    width: auto;
+  }
+  .li-1 {
+    display: inline-block;
+    width: auto;
+    padding: 0 var(--half-rem);
+  }
+  .menu-items .li-1:nth-child(7) {
+    padding-right: 0px;
+  }
+
+  .toggle {
+    display: none;
+  }
+}

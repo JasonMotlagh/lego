@@ -1,0 +1,85 @@
+.load-animation-container {
+    display: grid;
+    margin: 0 auto;
+    /* margin-top: 10vh; */
+    height: 10vw;
+    justify-items: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: var(--full-half-rem);
+}
+.load-animation-container p {
+    margin: 2vh 0;
+    /* visibility: hidden; */
+}
+/* .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+} */
+.lds-dual-ring:after {
+    content: "";
+    display: block;
+    width: 5vh;
+    height: 5vh;
+    margin: 0;
+    border-radius: 50%;
+    border: 6px solid var(--color-lego-yellow-secondary);
+    border-color: var(--color-lego-yellow-secondary) transparent var(--color-lego-yellow-secondary) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.brick-1-animation {
+    animation: brick-1 var(--loading-speed-enter) 0ms ease-in infinite;
+
+}
+.brick-1 {
+    position: absolute;
+    height: 30%;
+    width: 70%;
+    top: -30px;
+    left: 15%;
+    transition: top var(--loading-speed-enter) ease-in 0ms, opacity calc(var(--loading-speed-enter) / 2) ease-out calc(var(--loading-speed-enter) * 1.5);
+    /* background-color: red; */
+    /* transition: top var(--loading-speed-enter) ease-in;
+    transition: opacity calc(var(--loading-speed-enter) / 2) ease-out var(--loading-speed-enter); */
+    /* transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay]; */
+    /* transition: [transition-property] [transition-duration] linear|ease|ease-in|ease-out|ease-in-out ms to wait before starting; */
+}
+.brick-2 {
+    position: absolute;
+    height: 30%;
+    width: 70%;
+    top: -30px;
+    left: 15%;
+    transition: top var(--loading-speed-enter) ease-in var(--loading-speed-enter), opacity calc(var(--loading-speed-enter) / 2) ease-out calc(var(--loading-speed-enter) * 3);
+}
+.brick-3 {
+    position: absolute;
+    height: 30%;
+    width: 70%;
+    top: -30px;
+    left: 15%;
+    transition: top var(--loading-speed-enter) ease-in calc(var(--loading-speed-enter) * 2), opacity calc(var(--loading-speed-enter) / 2) ease-out calc(var(--loading-speed-enter) * 4.5);
+}
+.brick-4 {
+    position: absolute;
+    height: 30%;
+    width: 70%;
+    top: -30px;
+    left: 15%;
+    transition: top var(--loading-speed-enter) ease-in calc(var(--loading-speed-enter) * 3), opacity calc(var(--loading-speed-enter) / 2) ease-out calc(var(--loading-speed-enter) * 6);
+}
+
+.load-brick {
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,40 @@
+<style>
+    .grid-container-colors {
+        grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+        background-color: transparent;
+    }
+
+    .card img {
+        max-width: 150px;
+    }
+    
+    .card-colors {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(auto, 50%));
+        gap: var(--half-rem);
+        padding: calc(var(--half-rem) + var(--quarter-rem));
+        cursor: pointer;
+    }
+    .lego-color-data p {
+        margin: 0;
+        text-align: right;
+        font-size: calc(var(--full-rem) * .75);
+    }
+    .lego-color-data p:last-child {
+        text-transform: lowercase;
+    }
+    .other-color-data {
+        display: flex;
+        justify-content: space-between;
+        grid-column: 1/3;
+    }
+    .other-color-data p {
+        margin: 0;
+        font-size: calc(var(--full-rem) * .75);
+    }
+    .other-color-data p:last-of-type {
+        text-align: right;
+    }
+</style>
+
+<div class="grid-container grid-container-colors"></div>

@@ -1,0 +1,237 @@
+/*
+  All css is designed for mobile first.
+  Media queries are for styling on larger screens.
+*/
+
+/* @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet'); */
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* font-family: "Raleway"; */
+  font-family: "Signika";
+}
+
+:root {
+  --color-lego-yellow: #ffcf00;
+  --color-lego-yellow-secondary: #b39200;
+  --color-lego-yellow-secondary2: rgba(247, 208, 71, .6);
+  --color-lego-red: #d02c22;
+  --color-lego-red-secondary: #801a14;
+  --color-page-background: #eeeeee;
+  --color-icon: #575757;
+  --color-border: #393939;
+  --color-dropshadow: rgba(0, 0, 0, .45);
+
+  --navbar-height: 4vh;
+  --quarter-rem: .25rem;
+  --half-rem: .5rem;
+  --full-rem: 1rem;
+  --full-quarter-rem: 1.25rem;
+  --full-half-rem: 1.5rem;
+  --navbar-corner-radius: 1.5rem;
+  --navbar-border-size: 2px;
+
+  --transition-speed: 300ms;
+  --loading-speed-enter: 300ms;
+
+  --first-half-logo-centering: calc(100vw / 2) - calc(var(--half-rem) + var(--full-rem) + 1px);
+  --second-half-logo-centering: calc(calc(var(--navbar-height) * .625) / 2);
+  --mobile-logo-ceter-right-margins: calc(var(--first-half-logo-centering) - var(--second-half-logo-centering));
+}
+
+body {
+  background-color: var(--color-page-background);
+  margin: var(--half-rem);
+  font-size: var(--full-rem);
+  /* font-family: "Raleway"; */
+  font-family: "Signika";
+}
+
+main {
+  padding: var(--quarter-rem);
+  margin: 0 calc(var(--full-rem) * 2);
+  /* display: none; */
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.shell {
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+  display: grid;
+  gap: var(--half-rem);
+  padding: var(--quarter-rem);
+  border-radius: calc(var( --navbar-corner-radius) / 4);
+  background-color: #7a7a7a;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: calc(var( --navbar-corner-radius) / 3);
+  border: none;
+  box-shadow: 0px 1px 2px 0px var(--color-dropshadow);
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.welcome-container {
+  width: 75vw;
+  margin: var(--half-rem) auto;
+  padding: var(--half-rem);
+}
+.welcome-container p {
+  margin-top: var(--half-rem);
+}
+.page-title {
+  text-align: center;
+}
+.page-title h3 {
+  margin-bottom: var(--quarter-rem);
+}
+.page-title-error {
+  color: var(--color-lego-red);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: var(--half-rem) auto;
+  padding: var(--half-rem);
+  border: 1px solid var(--color-border);
+  width: 80vw;
+}
+.modal-edit, .modal-save, .modal-close {
+  color: var(--color-lego-yellow-secondary);
+  font-size: calc(var(--full-rem) * 1.5);
+  font-weight: bold;
+}
+.modal-edit {
+  justify-self: flex-start;
+}
+.modal-save {
+  visibility: hidden;
+  justify-self: center;
+}
+.modal-close {
+  justify-self: flex-end;
+}
+.modal-edit:hover,
+.modal-edit:focus,
+.modal-save:hover,
+.modal-save:focus,
+.modal-close:hover,
+.modal-close:focus,
+.modal-delete:hover,
+.modal-delete:focus {
+  color:var(--color-lego-red);
+  cursor: pointer;
+}
+.modal-header, .error-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: var(--quarter-rem);
+}
+.modal-header {
+  grid-template-rows: repeat(2, auto);
+}
+.error-grid p {
+  margin: 0;
+  padding: calc(var(--quarter-rem) / 2);
+  text-align: left;
+  font-weight: 300;
+  font-size: calc(var(--full-rem) * .8);
+  color: var(--color-lego-red);
+}.error-grid p:before {
+  content: "*";
+}
+.add-errors {
+  display: none;
+  grid-column: 1/4;
+}
+
+.modal-footer {
+  display: flex;
+  /* justify-content: end; */
+  margin-top: Calc(var(--full-rem) * .75);
+}
+.modal-delete {
+  font-size: var(--full-half-rem);
+  color: var(--color-lego-red-secondary);
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.options-divider {
+  border-top: var(--color-lego-yellow-secondary) 1px solid;
+  padding-top: var(--half-rem);
+}
+
+.options-search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: var(--half-rem) 0;
+}
+.options-search input {
+  border-radius: 25px;
+  border: var(--color-lego-yellow-secondary) 1px solid;
+  margin-right: var(--quarter-rem);
+  padding: 0 var(--half-rem);
+  height: var(--full-half-rem);
+  width: 70%;
+  text-align: right;
+}
+.search-icon {
+  cursor: pointer;
+}
+.search-icon:hover {
+  color: var(--color-lego-yellow-secondary);
+}
+.search-string {
+  font-weight: 700;
+}
+
+.modal-body label {
+  margin: 0;
+  padding: calc(var(--quarter-rem) / 2);
+  text-align: right;
+  font-weight: 700;
+}
+
+/****************
+  Tablet/Desktop Menu
+****************/
+@media all and (min-width: 992px) {
+  .welcome-container {
+    width: 50vw;
+  }
+}

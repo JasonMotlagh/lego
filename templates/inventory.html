@@ -1,0 +1,122 @@
+<style>
+    .grid-container-inventory-search {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, auto));
+        gap: var(--half-rem);
+        padding: var(--quarter-rem);
+        border-radius: calc(var( --navbar-corner-radius) / 4);
+        background-color: transparent;
+    }
+    .card-inventory-search-results {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: repeat(3, auto);
+        gap: var(--half-rem);
+        padding: calc(var(--full-rem) * .75);
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .card-inventory-search-results img {
+        grid-row: 1/4;
+        margin: 0 auto;
+    }
+    .card-inventory-search-results p:nth-child(even) {
+        font-weight: 700;
+        text-align: end;
+    }
+    
+    .grid-container-inventory {
+        grid-template-columns: repeat(auto-fill, minmax(125px, auto));
+        gap: var(--quarter-rem);
+    }
+
+    .case-drawer {
+        background-color: #ffffff;
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        grid-template-rows: repeat(5, auto);
+        gap: calc(var(--quarter-rem) / 2);
+        border-radius: calc(var(--navbar-corner-radius) / 5);
+    }
+
+    .case-drawer-col-row-title {
+        display: flex;
+        justify-content: center;
+        font-weight: 300;
+        font-size: calc(var(--half-rem) + var(--quarter-rem));
+        color: var(--color-lego-red);
+        /* visibility: visible; */
+        font-weight: 700;
+    }
+
+    .area-design-id-0, .area-design-id-1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: calc(var(--half-rem) + var(--quarter-rem));
+    }
+    .area-piece-0, .area-piece-1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: calc(var(--quarter-rem) / 2);
+    }
+    .area-piece-0 {
+        border-bottom: 2px solid var(--color-page-background);
+    }
+    .area-piece-0 img, .area-piece-1 img {
+        width: 33%;
+        height: auto;
+        border-radius: calc(var(--navbar-corner-radius) / 5);
+        cursor: pointer;
+    }
+
+
+
+    /****************
+        Desktop Virw
+    ****************/
+    @media all and (min-width: 1024px) {
+        .grid-container-inventory-8-8 {
+            grid-template-columns: repeat(8, minmax(110px, auto));
+        }
+        
+        .grid-container-inventory-8-8 .case-drawer-col-row-title {
+            opacity: 25%;
+        }
+    }
+
+    @media all and (min-width: 610px) {
+        .grid-container-inventory-4-6 {
+            grid-template-columns: repeat(4, minmax(110px, auto));
+        }
+
+        .grid-container-inventory-4-6 .case-drawer-col-row-title {
+            opacity: 25%;
+        }
+    }
+
+    @media all and (min-width: 660px) {
+        .grid-container-inventory-5-8 {
+            grid-template-columns: repeat(5, minmax(110px, auto));
+        }
+
+        .grid-container-inventory-5-8 .case-drawer-col-row-title {
+            opacity: 25%;
+        }
+    }
+
+@media all and (min-width: 780px) {
+    .grid-container-inventory-6-3 {
+        grid-template-columns: repeat(6, minmax(110px, auto));
+    }
+
+    .grid-container-inventory-6-3 .case-drawer-col-row-title {
+        opacity: 25%;
+    }
+}
+</style>
+
+<div class="shell"></div>

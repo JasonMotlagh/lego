@@ -1,0 +1,72 @@
+<style>
+    .card-color-modal {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        grid-template-rows: repeat(7, auto);
+        column-gap: var(--half-rem);
+        row-gap: var(--quarter-rem);
+    }
+    .card-color-modal img {
+        grid-row: 1/8;
+    }
+    .card-color-modal p {
+        margin: 0;
+        padding: calc(var(--quarter-rem) / 2);
+        font-size: calc(var(--full-rem) * .75);
+    }
+    .card-color-modal p:nth-child(odd) {
+        text-align: left;
+    }
+    .card-color-modal p:nth-child(even) {
+        text-align: right;
+        font-weight: 700;
+        
+    }
+    .modal-footer {
+        display: none;
+    }
+
+    @media all and (min-width: 576px) {
+        .modal-content {
+            width: 60vw;
+        }
+    }
+    @media all and (min-width: 768px) {
+        .modal-content {
+            width: 50vw;
+        }
+    }
+    @media all and (min-width: 992px) {
+        .modal-content {
+            width: 40vw;
+        }
+    }
+    @media all and (min-width: 1200px) {
+        .modal-content {
+            width: 25vw;
+        }
+    }
+</style>
+
+<!-- Modal Content-->
+<div class="card modal-content">
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <div class="modal-edit">
+        <i class="fas fa-edit"></i>
+    </div>
+    <div class="modal-save">
+        <i class="far fa-save"></i>
+    </div>
+    <div class="modal-close">
+        <i class="far fa-window-close"></i>
+    </div>
+</div>
+<!-- Modal Body -->
+    <div class="modal-body card-color-modal">
+        
+    </div>
+<!-- Modal Footer -->
+    <div class="modal-footer"></div>
+</div>
